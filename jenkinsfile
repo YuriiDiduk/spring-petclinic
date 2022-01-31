@@ -5,6 +5,13 @@ pipeline {
   }
   
    stages {
+    stage('Compile') {
+       steps {
+         sh 'mvn compile' //only compilation of the code
+       }
+    }   
+   
+   
     stage('SonarQScan') {
       steps {
        withSonarQubeEnv(installationName: 'sq1') {
