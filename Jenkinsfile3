@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Docker version') {
+            steps {
+                sh "echo $USER"
+                sh 'docker version'
+            }
+        }
+  
+        stage('Build docker image') {
+            steps{
+                    sh 'docker build -t st251/pet-clinic:0.1 .'
+               
+            }
+        }
+      }
