@@ -14,7 +14,12 @@ pipeline {
                
             }
         }
-
+        stage('Docker run') {
+            steps{
+                    sh 'docker run --name pet-clinicA2 -p 8000:8181 st251/pet-clinic:0.2 | xargs --no-run-if-empty docker container stop'
+               
+            }
+        }
         stage('HelthCheck') {
             steps{
                     sh 'curl http://localhost:8000/'
