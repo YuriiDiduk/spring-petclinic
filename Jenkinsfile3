@@ -10,7 +10,28 @@ pipeline {
   
         stage('Build docker image') {
             steps{
-                    sh 'docker build -t st251/pet-clinic:0.1 .'
+                    sh 'docker build -t st251/pet-clinic:0.2 .'
+               
+            }
+        }
+        stage('Push docker image to DockerHub') {
+            steps{
+                withDockerRegistry(credentialsId: 'dockerhub-cred-st251', url: 'https://index.docker.io/v1/') {
+                    sh '''
+                        docker push st251/pet-clinic:0.2
+                    '''
+                }
+            }
+        }
+        stage('Docker run') {
+            steps{
+                    sh 'docker run --name pet-clinicA -p 8000:8181 st251/pet-clinic:0.2'
+               
+            }
+        }
+        stage('HelthCheck') {
+            steps{
+                    sh 'curl http://localhost:8000/'
                
             }
         }
