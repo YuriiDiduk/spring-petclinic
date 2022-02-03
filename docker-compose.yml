@@ -3,6 +3,7 @@ version: "2.2"
 services:
   petclin:
     image: st251/petclinicx:9
+    container_name: petclin2
     ports:
       - "8181:8181"
     #environment:    
@@ -12,6 +13,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    container_name: mysql2
     ports:
       - "3306:3306"
     environment:
@@ -28,6 +30,7 @@ services:
       
   postgres:
     image: postgres:14.1
+    container_name: postgres2
     ports:
       - "5432:5432"
     environment:
