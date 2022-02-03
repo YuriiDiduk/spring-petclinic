@@ -12,6 +12,8 @@ pipeline {
         }
     stage('HealthCheck') {
       steps {
+             echo 'stage B started'
+             sleep 300
              sh 'curl http//localhost:8181'
       }
    }
