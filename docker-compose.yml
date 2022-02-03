@@ -7,8 +7,7 @@ services:
     ports:
       - "8181:8181"
     #environment:    
-    networks:
-      - app-network
+     
 
 
   mysql:
@@ -24,9 +23,7 @@ services:
       - MYSQL_DATABASE=petclinic
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
-    networks:
-      - app-network
-      
+    
       
   postgres:
     image: postgres:14.1
@@ -37,7 +34,5 @@ services:
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_USER=petclinic
       - POSTGRES_DB=petclinic
-    networks:
-      - app-network
-
+    
  
