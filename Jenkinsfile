@@ -36,13 +36,13 @@ pipeline {
                 }
             }
         } 
-     stage('DComposeUp') {
+    stage('DComposeUp') {
             steps {
                       sh 'docker-compose up -d'
             }
         }
-     stage('HealthCheck') {
-             httpRequest responseHandle: 'NONE', url: 'http//localhost:8181'
+    stage('HealthCheck') {
+             sh 'curl http//localhost:8181'
    }
   }
    
