@@ -44,4 +44,4 @@ services:
 #Docker Networks
     networks:
      app-network:
-       driver: default
+       external: true
