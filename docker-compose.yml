@@ -42,6 +42,6 @@ services:
 
       
 #Docker Networks
-    networks:
-     app-network:
+  networks: 
+      app-network: 
         
