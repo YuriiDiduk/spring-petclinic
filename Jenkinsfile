@@ -35,7 +35,15 @@ pipeline {
                     }
                 }
             }
-        }  
+        } 
+     stage('DComposeUp') {
+            steps {
+                      sh 'docker-compose up -d'
+            }
+        }
+     stage('HealthCheck') {
+             httpRequest responseHandle: 'NONE', url: 'http//localhost:8181'
+   }
   }
    
 }
