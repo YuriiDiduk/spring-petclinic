@@ -42,7 +42,9 @@ pipeline {
             }
         }
     stage('HealthCheck') {
+      steps {
              sh 'curl http//localhost:8181'
+      }
    }
   }
    
