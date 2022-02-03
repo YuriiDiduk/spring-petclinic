@@ -19,7 +19,23 @@ pipeline {
         }
       }
     }
-     
+    stage('Building our image') {
+            steps {
+                script {
+                    dockerImage = docker.build "st251/petclinicAA:$BUILD_NUMBER"
+                }
+            }
+        }
+    stage('Deploy our image') {
+            steps {
+                script {
+                    // Assume the Docker Hub registry by passing an empty string as the first parameter
+                    docker.withRegistry('' , 'dockerhub-cred-st251') {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }  
   }
    
 }
