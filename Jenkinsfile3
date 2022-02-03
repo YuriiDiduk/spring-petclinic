@@ -10,21 +10,23 @@ pipeline {
   
         stage('Build docker image') {
             steps{
-                    sh 'docker build -t st251/pet-clinic:0.2 .'
+                    sh 'docker build -t st251/pet-clinic:0.3 .'
                
             }
         }
+        stage('SonarQScan') {
+            steps {
+                    withSonarQubeEnv(installationName: 'sq2') {
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
+        }
+      }
+    }
         stage('Docker run') {
             steps{
-                    sh ' '
+                    sh 'curl http://localhost:9000/'
                
             }
         }
-        stage('HelthCheck') {
-            steps{
-                    //sh 'curl http://localhost:8000/'
-               
-            }
-        }
+
     }
 }
