@@ -5,29 +5,6 @@ pipeline {
   }
   
    stages {
-    stage('Compile') {
-       steps {
-          
-       }
-    }   
-   
-   
-    stage('SonarQScan') {
-      steps {
-      
-        }
-      }
-    
-    stage('Building our image') {
-            steps { 
-                }
-            }
-        
-    stage('Deploy our image') {
-            steps {
-                 
-                    }
-    }
     stage('DComposeUp') {
             steps {
                       sh 'docker-compose up -d'
