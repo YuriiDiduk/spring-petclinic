@@ -22,7 +22,7 @@ pipeline {
     stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build "st251/petclinicAA:$BUILD_NUMBER"
+                    dockerImage = docker.build "st251/petclinicx:$BUILD_NUMBER"
                 }
             }
         }
