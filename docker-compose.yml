@@ -3,6 +3,8 @@ version: "2.2"
 services:
   petclin:
     image: st251/petclinicx:9
+    depends_on:
+      - mysql
     ports:
       - "8181:8181"
     #environment:    
