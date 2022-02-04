@@ -43,7 +43,9 @@ pipeline {
         }
     stage('HealthCheck') {
       steps {
-             sh 'curl http//localhost:8181'
+            
+             sleep 300
+             sh 'curl http://localhost:8181'
       }
    }
   }
