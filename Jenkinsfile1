@@ -14,7 +14,7 @@ pipeline {
    
     stage('SonarQScan') {
       steps {
-       withSonarQubeEnv('SonarCloud') {
+       withSonarQubeEnv('sq2') {
     sh "./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify \
         sonar:sonar -Dsonar.branch.name=${env.BRANCH_NAME}"
 }
