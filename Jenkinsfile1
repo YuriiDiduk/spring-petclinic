@@ -14,10 +14,9 @@ pipeline {
    
     stage('SonarQScan') {
       steps {
-       withSonarQubeEnv('sq2') {
-    sh "./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify \
-        sonar:sonar -Dsonar.branch.name=${env.BRANCH_NAME}"
-}
+        withSonarQubeEnv(installationName: 'sq2') {
+        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+        }
       }
     }
  
