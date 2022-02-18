@@ -17,6 +17,11 @@ pipeline {
                     sh "pwd"
             }
         }  
+     stage('Test') {
+            steps{
+                    sh "cat text.txt"
+            }
+        }  
      stage('DockerLint') {
             steps {       
                 sh 'docker run --rm -i hadolint/hadolint < Dockerfile1' 
