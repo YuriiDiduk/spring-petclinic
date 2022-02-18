@@ -4,25 +4,22 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   stages{
-  
-   stage('DockerLint') {
-       steps {
+    stage('DockerLint') {
+      steps {
         
         sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
        
       }
     }
-    
-    
     stage('Build') {
-            steps {
+      steps {
                 echo "DATE is ${TAG_DATE}"           
                 echo "The build number is ${env.BUILD_NUMBER}"
                 echo "You can also use \${BUILD_NUMBER} -> ${BUILD_NUMBER}" 
                 sh 'printenv'
-             }
+                  }
             }
-     stage { 
+    stage { 
       steps{
         post {
            failure {            
