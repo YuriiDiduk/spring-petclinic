@@ -7,7 +7,7 @@ pipeline {
    
      stage('Checkout') {
             steps{
-                git branch: 'main',
+                git branch: 'wavefront',
                     url: 'https://github.com/bakavets/docker-lessons.git'        
                 }
         }
