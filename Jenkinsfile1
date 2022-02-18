@@ -4,12 +4,26 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
       }
    stages{
+   
+     stage('Checkout') {
+            steps{
+                git branch: 'main',
+                    url: 'https://github.com/bakavets/docker-lessons.git'        
+                }
+        }
+     stage('Test') {
+            steps{
+                    sh "ls -la "
+                    sh "pwd"
+            }
+        }  
      stage('DockerLint') {
-       steps {       
-        sh 'docker run --rm -i hadolint/hadolint < Dockerfile' 
+            steps {       
+                sh 'docker run --rm -i hadolint/hadolint < Dockerfile1' 
              }
         }
    
+
      stage('Build') {
        steps {
                        
