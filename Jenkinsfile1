@@ -35,11 +35,6 @@ pipeline {
                 echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
                      }
               }
-     stage('URL') {
-            steps {
-               echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                  }
-               }
                
           }
     }
