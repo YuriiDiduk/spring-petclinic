@@ -20,6 +20,7 @@ pipeline {
                 echo "The build number is ${env.BUILD_NUMBER}"
                 echo "You can also use \${BUILD_NUMBER} -> ${BUILD_NUMBER}" 
                 sh 'printenv'
+             }
             }
      stage { 
       steps{
