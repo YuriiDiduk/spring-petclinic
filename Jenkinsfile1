@@ -2,7 +2,7 @@ pipeline {
   agent any
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
-  }
+      }
   stages{
     stage('DockerLint') {
       steps {       
@@ -18,7 +18,7 @@ pipeline {
                   }
             }
             
-        post {
+    post {
            failure {            
               script {
                   commonMethods.emailJobStatus ("BUILD FAILED")
@@ -26,3 +26,4 @@ pipeline {
             }
           }    
        }
+      }
