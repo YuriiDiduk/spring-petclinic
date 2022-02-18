@@ -5,10 +5,8 @@ pipeline {
   }
   stages{
     stage('DockerLint') {
-      steps {
-        
-        sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
-       
+      steps        
+        sh 'docker run --rm -i hadolint/hadolint < Dockerfile' 
       }
     }
     stage('Build') {
@@ -19,17 +17,13 @@ pipeline {
                 sh 'printenv'
                   }
             }
-    stage { 
-      steps{
+            
         post {
            failure {            
               script {
                   commonMethods.emailJobStatus ("BUILD FAILED")
               }
             }
-          }
+          }    
        }
-     }
-    
-   }
   }
