@@ -3,21 +3,20 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
       }
-   stages{
-   
+   stages{  
      stage('Checkout') {
             steps{
                 git branch: 'wavefront',
                     url: 'https://github.com/YuriiDiduk/spring-petclinic.git'        
                 }
-        }
+             }
      stage('Test') {
             steps{
                     sh "ls -la "
                     sh "pwd"
             }
         }  
-     stage('Test') {
+     stage('OPEN_FILE') {
             steps{
                     sh "cat text.txt"
             }
@@ -29,15 +28,15 @@ pipeline {
         }
    
 
-     stage('Build') {
-       steps {
+     stage('NAME') {
+            steps {
                        
                 echo "The build number is ${env.BUILD_NUMBER}"
-                echo "The build number is ${env.BRANCH_NAME}"
+                echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
                      }
               }
-    stage('URL') {
-      steps {
+     stage('URL') {
+            steps {
                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                   }
                }
